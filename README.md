@@ -4,7 +4,7 @@ A comprehensive Library Management System built with **Express.js**, **TypeScrip
 
 ## 🌐 Live Demo
 
-**API Base URL**: [https://library-management-api-cyan.vercel.app](https://library-management-api-cyan.vercel.app)
+**API Base URL**: [https://library-management-backend-beta-nine.vercel.app](https://library-management-backend-beta-nine.vercel.app)
 
 Test the API directly using the live deployment on Vercel!
 
@@ -14,12 +14,12 @@ You can immediately test the API endpoints using these direct links:
 
 **📚 Books Endpoints:**
 
-- **GET All Books**: [https://library-management-api-cyan.vercel.app/api/books](https://library-management-api-cyan.vercel.app/api/books)
-- **GET Books with Filter**: [https://library-management-api-cyan.vercel.app/api/books?filter=SCIENCE&limit=5](https://library-management-api-cyan.vercel.app/api/books?filter=SCIENCE&limit=5)
+- **GET All Books**: [https://library-management-backend-beta-nine.vercel.app/api/books](https://library-management-backend-beta-nine.vercel.app/api/books)
+- **GET Books with Filter**: [https://library-management-backend-beta-nine.vercel.app/api/books?filter=SCIENCE&limit=5](https://library-management-backend-beta-nine.vercel.app/api/books?filter=SCIENCE&limit=5)
 
 **📖 Borrow Endpoints:**
 
-- **GET Borrow Summary**: [https://library-management-api-cyan.vercel.app/api/borrow](https://library-management-api-cyan.vercel.app/api/borrow)
+- **GET Borrow Summary**: [https://library-management-backend-beta-nine.vercel.app/api/borrow](https://library-management-backend-beta-nine.vercel.app/api/borrow)
 
 **💡 Pro Tip**: Click the links above to see live data, or use tools like Postman/Thunder Client for POST/PUT/DELETE operations.
 
@@ -55,8 +55,8 @@ You can immediately test the API endpoints using these direct links:
 1. **Clone the repository**
 
 ```bash
-git clone <https://github.com/Abubokkor98/library-management-api>
-cd library-management-api
+git clone <https://github.com/Abubokkor98/library-management-backend>
+cd library-management-backend
 ```
 
 2. **Install dependencies**
@@ -109,7 +109,7 @@ http://localhost:5000/api
 **Production (Vercel):**
 
 ```
-https://library-management-api-cyan.vercel.app/api
+https://library-management-backend-beta-nine.vercel.app/api
 ```
 
 ### 📚 Book Endpoints
@@ -128,7 +128,9 @@ https://library-management-api-cyan.vercel.app/api
   "isbn": "9780553380163",
   "description": "An overview of cosmology and black holes.",
   "copies": 5,
-  "available": true
+  "available": true,
+  "image": "https://images-na.ssl-images-amazon.com/images/I/41QmdxlnRgL._SX331_BO1,204,203,200_.jpg",
+  "price": 15.99
 }
 ```
 
@@ -145,6 +147,8 @@ https://library-management-api-cyan.vercel.app/api
     "genre": "SCIENCE",
     "isbn": "9780553380163",
     "description": "An overview of cosmology and black holes.",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/41QmdxlnRgL._SX331_BO1,204,203,200_.jpg",
+    "price": 15.99,
     "copies": 5,
     "available": true,
     "createdAt": "2024-11-19T10:23:45.123Z",
@@ -238,14 +242,18 @@ GET /api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5
       "totalQuantity": 110,
       "book": {
         "title": "1984",
-        "isbn": "9780451524935"
+        "isbn": "9780451524935",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/41QmdxlnRgL._SX331_BO1,204,203,200_.jpg",
+        "price": 15.99
       }
     },
     {
       "totalQuantity": 2,
       "book": {
         "title": "A Brief History of Time",
-        "isbn": "9780553380163"
+        "isbn": "9780553380163",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/41QmdxlnRgL._SX331_BO1,204,203,200_.jpg",
+        "price": 15.99
       }
     }
   ]
@@ -291,6 +299,8 @@ interface IBook {
   author: string; // Required
   genre: Genre; // Required (enum)
   isbn: string; // Required, unique
+  image: string; // Required,
+  price: number; // Required
   description: string; // Optional
   copies: number; // Required, non-negative
   available: boolean; // Default: true
@@ -341,7 +351,7 @@ You can test the API using tools like:
 **Create a Book:**
 
 ```bash
-curl -X POST https://library-management-api-cyan.vercel.app/api/books \
+curl -X POST https://library-management-backend-beta-nine.vercel.app/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "The Hobbit",
@@ -356,7 +366,7 @@ curl -X POST https://library-management-api-cyan.vercel.app/api/books \
 **Borrow a Book:**
 
 ```bash
-curl -X POST https://library-management-api-cyan.vercel.app/api/borrow \
+curl -X POST https://library-management-backend-beta-nine.vercel.app/api/borrow \
   -H "Content-Type: application/json" \
   -d '{
     "book": "YOUR_BOOK_ID",
