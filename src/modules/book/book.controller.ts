@@ -26,7 +26,7 @@ const getAllBook = async (req: Request, res: Response) => {
       filter,
       sortBy = "createdAt",
       sort = "asc",
-      limit = "10",
+      limit = "20",
     } = req.query;
 
     const filterCondition: Record<string, unknown> = {};
