@@ -1,4 +1,4 @@
-# 📚 Library Management API
+# 📚 Library Management Backend
 
 A comprehensive Library Management System built with **Express.js**, **TypeScript**, and **MongoDB** using **Mongoose**. This API provides full CRUD operations for books and borrowing functionality with advanced features like aggregation pipelines, filtering, and business logic enforcement.
 
